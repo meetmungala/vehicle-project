@@ -2,30 +2,29 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['vamsid']==0)) {
-  header('location:logout.php');
-  } else{
-    if(isset($_POST['submit']))
-  {
-    $did=$_SESSION['vamsid'];
-    $name=$_POST['name'];
-  $mobno=$_POST['mobilenumber'];
-  $email=$_POST['email'];
-  $address=$_POST['address'];
-  $sql="update tbldriver set Name=:name,MobileNumber=:mobilenumber,Email=:email,Address=:address where ID=:did";
-     $query = $dbh->prepare($sql);
-     $query->bindParam(':name',$name,PDO::PARAM_STR);
-     $query->bindParam(':email',$email,PDO::PARAM_STR);
-     $query->bindParam(':mobilenumber',$mobno,PDO::PARAM_STR);
-     $query->bindParam(':address',$address,PDO::PARAM_STR);
-     $query->bindParam(':did',$did,PDO::PARAM_STR);
-$query->execute();
+if (strlen($_SESSION['vamsid']) == 0) {
+    header('location:logout.php');
+}
+else {
+    if (isset($_POST['submit'])) {
+        $did = $_SESSION['vamsid'];
+        $name = $_POST['name'];
+        $mobno = $_POST['mobilenumber'];
+        $email = $_POST['email'];
+        $address = $_POST['address'];
+        $sql = "update tbldriver set Name=:name,MobileNumber=:mobilenumber,Email=:email,Address=:address where ID=:did";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':email', $email, PDO::PARAM_STR);
+        $query->bindParam(':mobilenumber', $mobno, PDO::PARAM_STR);
+        $query->bindParam(':address', $address, PDO::PARAM_STR);
+        $query->bindParam(':did', $did, PDO::PARAM_STR);        $query->execute();
 
         echo '<script>alert("Profile has been updated")</script>';
-     
 
-  }
-  ?>
+
+    }
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -40,10 +39,10 @@ $query->execute();
 <link rel="stylesheet" href="../assets/css/main.css" type="text/css">
 </head>
 <body class="theme-indigo">
-    <?php include_once('includes/header.php');?>
+    <?php include_once('includes/header.php'); ?>
 
     <div class="main_content" id="main-content">
-       <?php include_once('includes/sidebar.php');?>
+       <?php include_once('includes/sidebar.php'); ?>
 
       
 
@@ -61,45 +60,38 @@ $query->execute();
                             </div>
                             <div class="body">
                                 <form id="" method="post" novalidate>
-                                    <?php
-$did=$_SESSION['vamsid'];
-$sql="SELECT * from  tbldriver where ID=:did";
-$query = $dbh -> prepare($sql);
-$query->bindParam(':did',$did,PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $row)
-{               ?>
+                                    <?php    $did = $_SESSION['vamsid'];    $sql = "SELECT * from  tbldriver where ID=:did";    $query = $dbh->prepare($sql);    $query->bindParam(':did', $did, PDO::PARAM_STR);    $query->execute();    $results = $query->fetchAll(PDO::FETCH_OBJ);    $cnt = 1;    if ($query->rowCount() > 0) 
+{        foreach ($results as $row) 
+{ ?>
                                     <div class="form-group">
                                         <label>Your ID</label>
-                                        <input type="text" class="form-control" id="exampleTextInput1" name="" value="<?php  echo $row->DriverID;?>" readonly='true'>
+                                        <input type="text" class="form-control" id="exampleTextInput1" name="" value="<?php echo $row->DriverID; ?>" readonly='true'>
                                     </div>
                                     <div class="form-group">
                                         <label>Name</label>
-                                       <input type="text" class="form-control" id="email2" name="name" value="<?php  echo $row->Name;?>" required="true">
+                                       <input type="text" class="form-control" id="email2" name="name" value="<?php echo $row->Name; ?>" required="true">
                                     </div>
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" id="email2" name="email" value="<?php  echo $row->Email;?>" required='true'>
+                                        <input type="email" class="form-control" id="email2" name="email" value="<?php echo $row->Email; ?>" required='true'>
                                     </div>
                                     <div class="form-group">
                                         <label>Contact Number</label>
-                                        <input type="text" class="form-control" id="email2" name="mobilenumber" value="<?php  echo $row->MobileNumber;?>" required='true' maxlength='10'>
+                                        <input type="text" class="form-control" id="email2" name="mobilenumber" value="<?php echo $row->MobileNumber; ?>" required='true' maxlength='10'>
                                     </div>
                                     <div class="form-group">
                                         <label>Address</label>
-                                       <textarea type="text" class="form-control" id="address" name="address" value="<?php  echo $row->UserName;?>" required="true"><?php  echo $row->Address;?></textarea>
+                                       <textarea type="text" class="form-control" id="address" name="address" value="<?php echo $row->UserName; ?>" required="true"><?php echo $row->Address; ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Joining Date</label>
-                                        <input type="text" class="form-control" id="email2" name="" value="<?php  echo $row->JoiningDate;?>" readonly="true">
+                                        <input type="text" class="form-control" id="email2" name="" value="<?php echo $row->JoiningDate; ?>" readonly="true">
                                     </div>
                                     
                                     
-                                     <?php $cnt=$cnt+1;}} ?>
+                                     <?php $cnt = $cnt + 1;
+        }
+    }?>
                                     <br>
                                     <button type="submit" class="btn btn-primary" name="submit">Update</button>
                                 </form>
@@ -131,4 +123,5 @@ foreach($results as $row)
     });
 </script>
 </body>
-</html><?php }  ?>
+</html><?php
+}?>

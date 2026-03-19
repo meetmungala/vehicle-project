@@ -2,13 +2,14 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['vamsid']==0)) {
-  header('location:logout.php');
-  } else{
+if (strlen($_SESSION['vamsid']) == 0) {
+    header('location:logout.php');
+}
+else {
 
 
 
-  ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +24,11 @@ if (strlen($_SESSION['vamsid']==0)) {
 </head>
 <body class="theme-indigo">
 
-<?php include_once('includes/header.php');?>
+<?php include_once('includes/header.php'); ?>
 
 <div class="main_content" id="main-content">
 
-    <?php include_once('includes/sidebar.php');?>
+    <?php include_once('includes/sidebar.php'); ?>
 
     
 
@@ -40,17 +41,11 @@ if (strlen($_SESSION['vamsid']==0)) {
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card widget_2 big_icon traffic">
                         <div class="body">
-                            <?php 
-                         $did=$_SESSION['vamsdid'];
-$sql ="SELECT * from  tblbook where Status='Approved' && AssignTo=:did ";
-$query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$totnewrequest=$query->rowCount();
+                            <?php
+    $did = $_SESSION['vamsdid'];    $sql = "SELECT * from  tblbook where Status='Approved' && AssignTo=:did ";    $query = $dbh->prepare($sql);    $query->bindParam(':did', $did, PDO::PARAM_STR);    $query->execute();    $results = $query->fetchAll(PDO::FETCH_OBJ);    $totnewrequest = $query->rowCount();
 ?>
                             <h6 style="color: red;">Total New Request</h6>
-                            <h2><?php echo htmlentities($totnewrequest);?></h2>
+                            <h2><?php echo htmlentities($totnewrequest); ?></h2>
                             <a href="new-request.php"><small> View Detail</small></a>
                           
                         </div>
@@ -59,17 +54,11 @@ $totnewrequest=$query->rowCount();
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card widget_2 big_icon sales">
                         <div class="body">
-                             <?php 
-                         $did=$_SESSION['vamsdid'];
-$sql ="SELECT * from  tblbook where Status='On The Way' && AssignTo=:did ";
-$query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$tototwrequest=$query->rowCount();
+                             <?php
+    $did = $_SESSION['vamsdid'];    $sql = "SELECT * from  tblbook where Status='On The Way' && AssignTo=:did ";    $query = $dbh->prepare($sql);    $query->bindParam(':did', $did, PDO::PARAM_STR);    $query->execute();    $results = $query->fetchAll(PDO::FETCH_OBJ);    $tototwrequest = $query->rowCount();
 ?>
                             <h6 style="color: orange;">Inprogress Request</h6>
-                           <h2><?php echo htmlentities($tototwrequest);?></h2>
+                           <h2><?php echo htmlentities($tototwrequest); ?></h2>
                             <a href="ontheway.php"><small> View Detail</small></a>
                         </div>
                     </div>
@@ -77,18 +66,12 @@ $tototwrequest=$query->rowCount();
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card widget_2 big_icon email">
                         <div class="body">
-                            <?php 
-                         $did=$_SESSION['vamsdid'];
-$sql ="SELECT * from  tblbook where Status='Completed' && AssignTo=:did ";
-$query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$totcomprequest=$query->rowCount();
+                            <?php
+    $did = $_SESSION['vamsdid'];    $sql = "SELECT * from  tblbook where Status='Completed' && AssignTo=:did ";    $query = $dbh->prepare($sql);    $query->bindParam(':did', $did, PDO::PARAM_STR);    $query->execute();    $results = $query->fetchAll(PDO::FETCH_OBJ);    $totcomprequest = $query->rowCount();
 ?>
                             <h6 style="color: green;">Completed Request</h6>
                            
-                            <h2><?php echo htmlentities($totcomprequest);?></h2>
+                            <h2><?php echo htmlentities($totcomprequest); ?></h2>
                             <a href="completed.php"><small> View Detail</small></a>
                         </div>
                     </div>
@@ -110,4 +93,5 @@ $totcomprequest=$query->rowCount();
 <script src="../assets/js/pages/index.js"></script>
 <script src="../assets/js/pages/todo-js.js"></script>
 </body>
-</html><?php } ?>
+</html><?php
+}?>

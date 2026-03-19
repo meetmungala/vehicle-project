@@ -2,13 +2,14 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['vamsid']==0)) {
-  header('location:logout.php');
-  } else{
+if (strlen($_SESSION['vamsid']) == 0) {
+    header('location:logout.php');
+}
+else {
 
 
 
-  ?>
+?>
 <!doctype html>
 <html lang="en">
 
@@ -26,10 +27,10 @@ if (strlen($_SESSION['vamsid']==0)) {
 <body class="theme-indigo">
     <!-- Page Loader -->
     
-<?php include_once('includes/header.php');?>
+<?php include_once('includes/header.php'); ?>
 
     <div class="main_content" id="main-content">
-       <?php include_once('includes/sidebar.php');?>
+       <?php include_once('includes/sidebar.php'); ?>
 
       
 
@@ -83,4 +84,5 @@ if (strlen($_SESSION['vamsid']==0)) {
 <script src="../assets/js/theme.js"></script><!-- Custom Js --> 
 <script src="../assets/js/pages/tables/jquery-datatable.js"></script>
 </body>
-</html><?php }  ?>
+</html><?php
+}?>
