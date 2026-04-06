@@ -123,7 +123,7 @@ if($query->rowCount() > 0)
 foreach($results as $row)
 {               ?>
                         <div class="about-us-info">
-                            <p><?php  echo htmlentities($row->PageDescription);?></p>
+                            <p><?php  echo $row->PageDescription;?></p>
                               <?php $cnt=$cnt+1;}} ?>
                             <!-- about social start -->
                             <div class="about-social">

@@ -178,7 +178,7 @@ if($query->rowCount() > 0)
 {
 foreach($results as $row)
 {               ?>
-                            <p><?php  echo htmlentities($row->PageDescription);?></p>
+                            <p><?php  echo $row->PageDescription;?></p>
                             
                             <?php $cnt=$cnt+1;}} ?>
                         </div>
