@@ -209,11 +209,29 @@
     #sticker {
         position: static;
     }
+    .header-top {
+        text-align: center;
+        padding: 10px 0;
+    }
+    .header-top-menu {
+        text-align: center;
+    }
     .welcome-msg {
-        display: none;
+        display: block;
+        margin-bottom: 10px;
+    }
+    .welcome-msg ul li {
+        display: inline-block;
+    }
+    .welcome-msg ul li p {
+        line-height: normal;
+        font-size: 13px;
+        margin-right: 10px;
     }
     .top-social ul li a {
-        padding: 0 10px;
+        padding: 0 8px;
+        line-height: 30px;
+        font-size: 15px;
     }
     .cart-menu ul li .cart-items {
         z-index: 99999999;
@@ -246,14 +264,14 @@
         display: none;
     }
     .slider-caption {
-        padding-top: 0;
+        padding-top: 30px;
     }
     .layer-1-1 h2.title-1,
     .layer-1-2 h2.title-2,
     .layer-2-1 h2.title-1,
     .layer-2-2 h2.title-2 {
         font-size: 20px;
-        line-height: 10px;
+        line-height: 26px;
         margin-bottom: 15px;
     }
     .layer-1-3 p.title-3,
