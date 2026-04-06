@@ -12,8 +12,10 @@ if (strlen($_SESSION['vamsaid']==0)) {
 
 
 $vamsaid=$_SESSION['vamsaid'];
- $pagetitle=$_POST['pagetitle'];
+ $pagetitle=htmlspecialchars($_POST['pagetitle'], ENT_QUOTES, 'UTF-8');
 $pagedes=$_POST['pagedes'];
+$pagedes = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $pagedes);
+$pagedes = strip_tags($pagedes, '<p><a><br><b><strong><i><em><ul><li><ol><h1><h2><h3><h4><h5><h6><div><span><img><u><blockquote>');
 $sql="update tblpage set PageTitle=:pagetitle,PageDescription=:pagedes where  PageType='aboutus'";
 $query=$dbh->prepare($sql);
 $query->bindParam(':pagetitle',$pagetitle,PDO::PARAM_STR);

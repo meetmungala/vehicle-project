@@ -12,10 +12,12 @@ if (strlen($_SESSION['vamsaid']==0)) {
 
 
 $vamsaid=$_SESSION['vamsaid'];
- $pagetitle=$_POST['pagetitle'];
+ $pagetitle=htmlspecialchars($_POST['pagetitle'], ENT_QUOTES, 'UTF-8');
 $pagedes=$_POST['pagedes'];
-$mobnum=$_POST['mobnum'];
-$email=$_POST['email'];
+$pagedes = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $pagedes);
+$pagedes = strip_tags($pagedes, '<p><a><br><b><strong><i><em><ul><li><ol><h1><h2><h3><h4><h5><h6><div><span><img><u><blockquote>');
+$mobnum=htmlspecialchars($_POST['mobnum'], ENT_QUOTES, 'UTF-8');
+$email=htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
 $sql="update tblpage set PageTitle=:pagetitle,PageDescription=:pagedes,Email=:email,MobileNumber=:mobnum where  PageType='contactus'";
 $query=$dbh->prepare($sql);
 $query->bindParam(':pagetitle',$pagetitle,PDO::PARAM_STR);
