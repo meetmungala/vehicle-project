@@ -44,6 +44,10 @@ The **Vehicle Breakdown Assistance Management System** is a web-based platform d
 - View and handle all breakdown requests
 - Dashboard with system overview
 
+### 💎 Design & UI
+- Modernized layout with polished CSS aesthetics
+- Fully responsive design optimized for mobile and desktop views
+
 ---
 
 ## 🛠 Tech Stack
