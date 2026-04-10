@@ -84,7 +84,7 @@ include('includes/dbconnection.php');
                     <div class="col-md-12">
                         <!-- page title start -->
                         <div class="page-title">
-                            <h2>about us</h2>
+                            <h2>About Our Company</h2>
                         </div>
                         <!-- page title end -->
                         <!-- page title menu start -->
@@ -129,9 +129,9 @@ foreach($results as $row)
                             <div class="about-social">
                                 <ul>
                                     <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                    <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
                                     <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
                                     <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
+                                    <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
                                     <li><a href="#"> <i class="fa fa-pinterest-p"></i> </a></li>
                                 </ul>
                             </div>
